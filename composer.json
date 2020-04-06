@@ -11,12 +11,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Api\\": "src/"
+            "Devin345458\\Api\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Api\\Test\\": "tests/",
+            "Devin345458\\Api\\Test\\": "tests/",
             "Cake\\Test\\": "vendor/cakephp/cakephp/tests/"
         }
     }
