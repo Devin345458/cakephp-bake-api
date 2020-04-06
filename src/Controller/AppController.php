@@ -1,6 +1,6 @@
 <?php
 
-namespace Api\Controller;
+namespace Devin345458\Api\Controller;
 
 use App\Controller\AppController as BaseController;
 

@@ -16,7 +16,7 @@ declare(strict_types=1);
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
-namespace Api\View;
+namespace Devin345458\Api\View;
 
 use Cake\View\JsonView;
 
