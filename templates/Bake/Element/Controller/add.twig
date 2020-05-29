@@ -21,17 +21,15 @@
      *   operationId="add",
      *   summary="Add a {{ currentModelName }}",
      *   tags={"{{ currentModelName }}"},
-     *   consumes={"application/json"},
-     *   produces={"application/json"},
      *   @OA\RequestBody(
      *       required=true,
-     *       description="order placed for purchasing the pet",
-     *       @OA\JsonContent(ref="#/components/schemas/{{ currentModelName }}")
+     *       description="The {{ singularHumanName }} you want to add",
+     *       @OA\JsonContent(ref="#/components/schemas/{{ singularName }}")
      *   ),
      *   @OA\Response(
      *    response="200",
      *    description="Successful operation",
-     *    @OA\JsonContent(ref="#/components/schemas/{{ currentModelName }}")
+     *    @OA\JsonContent(ref="#/components/schemas/{{ singularName }}")
      *   ),
      *  )
      *

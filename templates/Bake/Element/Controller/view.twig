@@ -29,7 +29,7 @@
      *   @OA\Parameter(
      *      name="id",
      *      in="path",
-     *      description="ID of {{ currentModelName }} that you want",
+     *      description="ID of {{ singularHumanName }} that you want",
      *      required=true,
      *      @OA\Schema(
      *          type="integer",
@@ -39,7 +39,7 @@
      *   @OA\Response(
      *    response="200",
      *    description="Successful operation",
-     *    @OA\JsonContent(ref="#/components/schemas/{{ currentModelName }}")
+     *    @OA\JsonContent(ref="#/components/schemas/{{ singularName }}")
      *   )
      *  )
      * @param string|null $id {{ singularHumanName }} id.
