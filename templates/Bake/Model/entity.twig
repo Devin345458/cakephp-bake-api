@@ -31,7 +31,7 @@ declare(strict_types=1);
 namespace {{ namespace }}\Model\Entity;
 use Cake\ORM\Entity;
 
-{{ DocBlock.swaggerClassDescription(name, 'Entity', annotations)|raw, swagger|raw}}
+{{ Swagger.swaggerClassDescription(name, 'Entity', annotations, swagger)|raw}}
 class {{ name }} extends Entity
 {
 {% if accessible %}
