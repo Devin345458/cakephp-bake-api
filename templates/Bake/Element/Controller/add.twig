@@ -17,19 +17,19 @@
     /**
      * Add method
      *
-     * @OA\Post(path="/1.0/{{ currentModelName }}",
+     * @OA\Post(path="/v1/{{ currentModelName }}",
      *   operationId="add",
      *   summary="Add a {{ currentModelName }}",
      *   tags={"{{ currentModelName }}"},
      *   @OA\RequestBody(
      *       required=true,
      *       description="The {{ singularHumanName }} you want to add",
-     *       @OA\JsonContent(ref="#/components/schemas/{{ singularName }}")
+     *       @OA\JsonContent(ref="#/components/schemas/{{ singularName | capitalize }}")
      *   ),
      *   @OA\Response(
      *    response="200",
      *    description="Successful operation",
-     *    @OA\JsonContent(ref="#/components/schemas/{{ singularName }}")
+     *    @OA\JsonContent(ref="#/components/schemas/{{ singularName | capitalize}}")
      *   ),
      *  )
      *

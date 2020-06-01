@@ -17,7 +17,7 @@
      * Index method
      *
      * @OA\Get(
-     *     path="/1.0/{{ currentModelName }}",
+     *     path="/v1/{{ currentModelName }}",
      *     tags={"{{ currentModelName }}"},
      *     summary="Returns paginated {{ currentModelName }}",
      *     description="Returns paginated {{ currentModelName }}",
@@ -28,7 +28,7 @@
      *          @OA\JsonContent(
      *              @OA\Property(
      *                  type="array",
-     *                  @OA\Items(ref="#/components/schemas/{{ singularName }}")
+     *                  @OA\Items(ref="#/components/schemas/{{ singularName | capitalize }}")
      *              )
      *          )
      *     )

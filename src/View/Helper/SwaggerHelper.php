@@ -4,6 +4,7 @@
 namespace Devin345458\Api\View\Helper;
 
 use Cake\View\Helper;
+use Cake\Collection\Collection;
 
 
 class SwaggerHelper extends Helper
@@ -20,11 +21,30 @@ class SwaggerHelper extends Helper
     {
         $lines = [];
         foreach ($properties as $property => $type) {
-            $type = $type ? $type . ' ' : '';
-            $lines[] = "@OA\Property( type=\"{$type}\", property=\"{$property}\", description=\"{$property}\"),";
+            $swagger_type = $type ? $this->_typeConversion($type): '';
+            $line = "@OA\Property( type=\"{$swagger_type}\", property=\"{$property}\", description=\"{$property}\"";
+            if ($type['kind'] === 'association') {
+                $line .= ' ref="#/components/schemas/' . str_replace('\App\Model\Entity\\', '', $type['type']) . '"';
+            }
+            $lines[] = $line . ')';
         }
 
         return $lines;
+    }
+
+    protected function _typeConversion($type) {
+        $result = $type['type'];
+        switch ($type['type']) {
+            case 'uuid':
+                $result = 'string';
+                break;
+        }
+
+        if ($type['kind'] === 'association') {
+            $result = 'object';
+        }
+
+        return $result;
     }
 
 
@@ -69,7 +89,7 @@ class SwaggerHelper extends Helper
         if ($className && $classType) {
             $lines[] = "@OA\Schema(title=\"{$className}\", description=\"{$classType}\",";
         }
-        $numItems = count($annotation);
+        $numItems = count($swagger);
         foreach ($swagger as $key => $annotation ) {
             if ($key < $numItems) {
                 $lines[] = $annotation . ',';

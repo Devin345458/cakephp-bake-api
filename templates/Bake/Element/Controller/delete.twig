@@ -16,7 +16,7 @@
     /**
      * Delete method
      *
-     * @OA\Delete(path="/1.0/{{ currentModelName }}",
+     * @OA\Delete(path="/v1/{{ currentModelName }}",
      *   operationId="delete",
      *   summary="Delete a {{ currentModelName }}",
      *   tags={"{{ currentModelName }}"},
@@ -35,7 +35,7 @@
      *    description="Successful operation",
      *    @OA\JsonContent(
      *      @OA\Schema(
-     *          name="success"
+     *          title="success",
      *          type="string"
      *      )
      *     )

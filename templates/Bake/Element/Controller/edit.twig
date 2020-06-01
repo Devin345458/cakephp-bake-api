@@ -20,7 +20,7 @@
      * Edit method
      *
      *
-     * @OA\Patch(path="/1.0/{{ currentModelName }}",
+     * @OA\Patch(path="/v1/{{ currentModelName }}",
      *   operationId="edit",
      *   summary="Edit a {{ currentModelName }}",
      *   tags={"{{ currentModelName }}"},
@@ -37,12 +37,12 @@
      *   @OA\RequestBody(
      *       required=true,
      *       description="The edited {{ currentModelName }} ",
-     *       @OA\JsonContent(ref="#/components/schemas/{{ currentModelName }}")
+     *       @OA\JsonContent(ref="#/components/schemas/{{ singularName | capitalize }}")
      *   ),
      *   @OA\Response(
      *    response="200",
      *    description="Successful operation",
-     *    @OA\JsonContent(ref="#/components/schemas/{{ currentModelName }}")
+     *    @OA\JsonContent(ref="#/components/schemas/{{ singularName }}")
      *   )
      *  )
      *
