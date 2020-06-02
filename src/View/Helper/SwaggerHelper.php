@@ -24,7 +24,11 @@ class SwaggerHelper extends Helper
             $swagger_type = $type ? $this->_typeConversion($type): '';
             $line = "@OA\Property( type=\"{$swagger_type}\", property=\"{$property}\", description=\"{$property}\"";
             if ($type['kind'] === 'association') {
-                $line .= ' ref="#/components/schemas/' . str_replace('\App\Model\Entity\\', '', $type['type']) . '"';
+                if ($swagger_type === 'array') {
+                    $line .= ' , @OA\Items( ref="#/components/schemas/' . str_replace('\App\Model\Entity\\', '', $type['type']) . '")';
+                } else {
+                    $line .= ' , ref="#/components/schemas/' . str_replace('\App\Model\Entity\\', '', $type['type']) . '"';
+                }
             }
             $lines[] = $line . ')';
         }
@@ -41,7 +45,17 @@ class SwaggerHelper extends Helper
         }
 
         if ($type['kind'] === 'association') {
-            $result = 'object';
+            $class_name = str_replace('Cake\ORM\Association\\', '', get_class($type['association']));
+            switch ($class_name) {
+                case 'HasMany':
+                    $result = 'array';
+                    break;
+                case 'BelongsToMany':
+                    $result = 'array';
+                    break;
+                default:
+                    $result = 'object';
+            }
         }
 
         return $result;
